@@ -18,7 +18,6 @@
 package com.velocitypowered.proxy.protocol.packet.chat;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.proxy.crypto.SignedChatCommand;
@@ -26,6 +25,7 @@ import com.velocitypowered.proxy.crypto.SignedChatMessage;
 import com.velocitypowered.proxy.protocol.MinecraftPacket;
 import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
@@ -153,7 +153,7 @@ public class ChatBuilder {
       } else {
         // Well crap
         if (message.startsWith("/")) {
-          return new PlayerCommand(message.substring(1), ImmutableList.of(), Instant.now());
+          return new PlayerCommand(message.substring(1), List.of(), Instant.now());
         } else {
           // This will produce an error on the server, but needs to be here.
           return new PlayerChat(message);

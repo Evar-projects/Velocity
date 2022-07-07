@@ -20,7 +20,6 @@ package com.velocitypowered.proxy.command;
 import static com.mojang.brigadier.arguments.StringArgumentType.word;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.velocitypowered.api.command.Command;
@@ -136,7 +135,7 @@ public class SuggestionsProviderTests extends CommandTestSuite {
 
       @Override
       public List<String> suggest(final Invocation invocation) {
-        return ImmutableList.of("world");
+        return List.of("world");
       }
     });
 
@@ -195,7 +194,7 @@ public class SuggestionsProviderTests extends CommandTestSuite {
 
       @Override
       public List<String> suggest(final Invocation invocation) {
-        return ImmutableList.of("baz", "qux");
+        return List.of("baz", "qux");
       }
     });
 
@@ -282,7 +281,7 @@ public class SuggestionsProviderTests extends CommandTestSuite {
 
     @Override
     public List<String> suggest(final Invocation invocation) {
-      return ImmutableList.of();
+      return List.of();
     }
   }
 }

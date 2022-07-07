@@ -75,13 +75,7 @@ import java.nio.file.Path;
 import java.security.AccessController;
 import java.security.KeyPair;
 import java.security.PrivilegedAction;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
@@ -491,7 +485,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
       // done first to refuse new connections
       cm.shutdown();
 
-      ImmutableList<ConnectedPlayer> players = ImmutableList.copyOf(connectionsByUuid.values());
+      List<ConnectedPlayer> players = List.copyOf(connectionsByUuid.values());
       for (ConnectedPlayer player : players) {
         player.disconnect(reason);
       }

@@ -17,17 +17,14 @@
 
 package com.velocitypowered.proxy.tablist;
 
-import com.google.common.collect.ImmutableList;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.player.TabListEntry;
 import com.velocitypowered.api.util.GameProfile;
 import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
 import com.velocitypowered.proxy.protocol.packet.PlayerListItem;
 import com.velocitypowered.proxy.protocol.packet.PlayerListItem.Item;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -88,7 +85,7 @@ public class VelocityTabListLegacy extends VelocityTabList {
           nameMapping.put(item.getName(), uuid);
           entries.put(uuid, (VelocityTabListEntry) TabListEntry.builder()
               .tabList(this)
-              .profile(new GameProfile(uuid, item.getName(), ImmutableList.of()))
+              .profile(new GameProfile(uuid, item.getName(), List.of()))
               .latency(item.getLatency())
               .build());
         }

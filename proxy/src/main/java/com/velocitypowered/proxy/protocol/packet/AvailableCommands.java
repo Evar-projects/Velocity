@@ -18,7 +18,6 @@
 package com.velocitypowered.proxy.protocol.packet;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -44,11 +43,8 @@ import com.velocitypowered.proxy.util.collect.IdentityHashStrategy;
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenCustomHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.Queue;
+
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -113,7 +109,7 @@ public class AvailableCommands implements MinecraftPacket {
   @Override
   public void encode(ByteBuf buf, Direction direction, ProtocolVersion protocolVersion) {
     // Assign all the children an index.
-    Deque<CommandNode<CommandSource>> childrenQueue = new ArrayDeque<>(ImmutableList.of(rootNode));
+    Deque<CommandNode<CommandSource>> childrenQueue = new ArrayDeque<>(List.of(rootNode));
     Object2IntMap<CommandNode<CommandSource>> idMappings = new Object2IntLinkedOpenCustomHashMap<>(
         IdentityHashStrategy.instance());
     while (!childrenQueue.isEmpty()) {

@@ -22,7 +22,6 @@ import static com.velocitypowered.api.network.ProtocolVersion.MINECRAFT_1_16;
 import static com.velocitypowered.api.network.ProtocolVersion.MINECRAFT_1_8;
 import static com.velocitypowered.proxy.protocol.util.PluginMessageUtil.constructChannelsPacket;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.suggestion.Suggestion;
 import com.velocitypowered.api.command.VelocityBrigadierMessage;
 import com.velocitypowered.api.event.command.CommandExecuteEvent.CommandResult;
@@ -317,7 +316,7 @@ public class ClientPlaySessionHandler implements MinecraftSessionHandler {
           }
         }
         server.getEventManager().fireAndForget(new PlayerChannelRegisterEvent(player,
-            ImmutableList.copyOf(channelIdentifiers)));
+            List.copyOf(channelIdentifiers)));
         backendConn.write(packet.retain());
       } else if (PluginMessageUtil.isUnregister(packet)) {
         player.getKnownChannels().removeAll(PluginMessageUtil.getChannels(packet));

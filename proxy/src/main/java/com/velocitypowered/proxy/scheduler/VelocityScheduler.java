@@ -20,7 +20,6 @@ package com.velocitypowered.proxy.scheduler;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
@@ -28,10 +27,8 @@ import com.velocitypowered.api.plugin.PluginManager;
 import com.velocitypowered.api.scheduler.ScheduledTask;
 import com.velocitypowered.api.scheduler.Scheduler;
 import com.velocitypowered.api.scheduler.TaskStatus;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.Set;
+
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -100,7 +97,7 @@ public class VelocityScheduler implements Scheduler {
   public boolean shutdown() throws InterruptedException {
     Collection<ScheduledTask> terminating;
     synchronized (tasksByPlugin) {
-      terminating = ImmutableList.copyOf(tasksByPlugin.values());
+      terminating = List.copyOf(tasksByPlugin.values());
     }
     for (ScheduledTask task : terminating) {
       task.cancel();

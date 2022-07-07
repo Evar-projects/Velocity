@@ -8,12 +8,12 @@
 package com.velocitypowered.api.plugin;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.velocitypowered.api.plugin.meta.PluginDependency;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -93,7 +93,7 @@ public interface PluginDescription {
    * @see Plugin#dependencies()
    */
   default Collection<PluginDependency> getDependencies() {
-    return ImmutableSet.of();
+    return Set.of();
   }
 
   default Optional<PluginDependency> getDependency(String id) {

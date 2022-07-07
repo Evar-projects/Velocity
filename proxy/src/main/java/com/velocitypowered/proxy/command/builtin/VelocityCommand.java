@@ -20,7 +20,6 @@ package com.velocitypowered.proxy.command.builtin;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -40,11 +39,7 @@ import com.velocitypowered.proxy.util.InformationUtils;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
@@ -72,7 +67,7 @@ public class VelocityCommand implements SimpleCommand {
     void execute(final CommandSource source, final String @NonNull [] args);
 
     default List<String> suggest(final CommandSource source, final String @NonNull [] currentArgs) {
-      return ImmutableList.of();
+      return List.of();
     }
 
     boolean hasPermission(final CommandSource source, final String @NonNull [] args);
@@ -146,7 +141,7 @@ public class VelocityCommand implements SimpleCommand {
 
     SubCommand command = commands.get(currentArgs[0].toLowerCase(Locale.US));
     if (command == null) {
-      return ImmutableList.of();
+      return List.of();
     }
     @SuppressWarnings("nullness")
     String[] actualArgs = Arrays.copyOfRange(currentArgs, 1, currentArgs.length);
@@ -272,7 +267,7 @@ public class VelocityCommand implements SimpleCommand {
         return;
       }
 
-      List<PluginContainer> plugins = ImmutableList.copyOf(server.getPluginManager().getPlugins());
+      List<PluginContainer> plugins = List.copyOf(server.getPluginManager().getPlugins());
       int pluginCount = plugins.size();
 
       if (pluginCount == 0) {
@@ -354,14 +349,14 @@ public class VelocityCommand implements SimpleCommand {
         return;
       }
 
-      Collection<RegisteredServer> allServers = ImmutableSet.copyOf(server.getAllServers());
+      Collection<RegisteredServer> allServers = Set.copyOf(server.getAllServers());
       JsonObject servers = new JsonObject();
       for (RegisteredServer iter : allServers) {
         servers.add(iter.getServerInfo().getName(),
                 InformationUtils.collectServerInfo(iter));
       }
       JsonArray connectOrder = new JsonArray();
-      List<String> attemptedConnectionOrder = ImmutableList.copyOf(
+      List<String> attemptedConnectionOrder = List.copyOf(
               server.getConfiguration().getAttemptConnectionOrder());
       for (String s : attemptedConnectionOrder) {
         connectOrder.add(s);

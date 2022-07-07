@@ -17,7 +17,6 @@
 
 package com.velocitypowered.proxy.protocol.packet;
 
-import com.google.common.collect.ImmutableList;
 import com.velocitypowered.api.proxy.server.ServerPing;
 import com.velocitypowered.api.proxy.server.ServerPing.Players;
 import com.velocitypowered.proxy.protocol.packet.legacyping.LegacyMinecraftPingVersion;
@@ -25,10 +24,12 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
+import java.util.List;
+
 public class LegacyDisconnect {
 
   private static final ServerPing.Players FAKE_PLAYERS = new ServerPing.Players(0, 0,
-      ImmutableList.of());
+      List.of());
   private static final String LEGACY_COLOR_CODE = Character
       .toString(LegacyComponentSerializer.SECTION_CHAR);
 

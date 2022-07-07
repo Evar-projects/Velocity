@@ -91,7 +91,7 @@ public final class PluginMessageUtil {
     if (!message.content().isReadable()) {
       // If we try to split this, we will get an one-element array with the empty string, which
       // has caused issues with 1.13+ compatibility. Just return an empty list.
-      return ImmutableList.of();
+      return List.of();
     }
     String channels = message.content().toString(StandardCharsets.UTF_8);
     return ImmutableList.copyOf(channels.split("\0"));

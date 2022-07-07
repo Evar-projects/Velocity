@@ -18,10 +18,10 @@
 package com.velocitypowered.proxy.event;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.reflect.TypeToken;
 import java.util.Collection;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 class EventTypeTracker {
@@ -34,7 +34,7 @@ class EventTypeTracker {
 
   public Collection<Class<?>> getFriendsOf(final Class<?> eventType) {
     if (friends.containsKey(eventType)) {
-      return ImmutableSet.copyOf(friends.get(eventType));
+      return Set.copyOf(friends.get(eventType));
     }
 
     final Collection<Class<?>> types = getEventTypes(eventType);

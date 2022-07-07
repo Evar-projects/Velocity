@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.google.common.collect.ImmutableSet;
 import java.util.Collection;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -40,9 +39,9 @@ class CappedSetTest {
 
   @Test
   void testAddAll() {
-    Set<String> doesFill1 = ImmutableSet.of("coffee", "tea");
-    Set<String> doesFill2 = ImmutableSet.of("chocolate");
-    Set<String> overfill = ImmutableSet.of("Coke", "Pepsi");
+    Set<String> doesFill1 = Set.of("coffee", "tea");
+    Set<String> doesFill2 = Set.of("chocolate");
+    Set<String> overfill = Set.of("Coke", "Pepsi");
 
     Collection<String> coll = CappedSet.create(3);
     assertTrue(coll.addAll(doesFill1), "did not add items");
@@ -54,9 +53,9 @@ class CappedSetTest {
 
   @Test
   void handlesSetBehaviorCorrectly() {
-    Set<String> doesFill1 = ImmutableSet.of("coffee", "tea");
-    Set<String> doesFill2 = ImmutableSet.of("coffee", "chocolate");
-    Set<String> overfill = ImmutableSet.of("coffee", "Coke", "Pepsi");
+    Set<String> doesFill1 = Set.of("coffee", "tea");
+    Set<String> doesFill2 = Set.of("coffee", "chocolate");
+    Set<String> overfill = Set.of("coffee", "Coke", "Pepsi");
 
     Collection<String> coll = CappedSet.create(3);
     assertTrue(coll.addAll(doesFill1), "did not add items");
