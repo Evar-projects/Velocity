@@ -109,7 +109,7 @@ public class ArgumentPropertyRegistry {
       writeIdentifier(buf, property.getIdentifier(), protocolVersion);
       buf.writeBytes(property.getData());
     } else {
-      ArgumentPropertySerializer serializer = byClass.get(type.getClass());
+      ArgumentPropertySerializer<?> serializer = byClass.get(type.getClass());
       ArgumentIdentifier id = classToId.get(type.getClass());
       if (serializer == null || id == null) {
         throw new IllegalArgumentException("Don't know how to serialize "

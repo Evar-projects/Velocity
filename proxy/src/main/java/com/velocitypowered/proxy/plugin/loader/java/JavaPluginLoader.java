@@ -85,7 +85,7 @@ public class JavaPluginLoader implements PluginLoader {
 
     JavaVelocityPluginDescriptionCandidate candidateInst =
         (JavaVelocityPluginDescriptionCandidate) candidate;
-    Class mainClass = loader.loadClass(candidateInst.getMainClass());
+    Class<?> mainClass = loader.loadClass(candidateInst.getMainClass());
     return createDescription(candidateInst, mainClass);
   }
 
