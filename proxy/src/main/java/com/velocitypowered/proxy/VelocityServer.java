@@ -590,8 +590,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
       return true;
     }
     String lowerName = connection.getUsername().toLowerCase(Locale.US);
-    return !(connectionsByName.containsKey(lowerName)
-        || connectionsByUuid.containsKey(connection.getUniqueId()));
+    return !connectionsByName.containsKey(lowerName) && !connectionsByUuid.containsKey(connection.getUniqueId());
   }
   
   /**

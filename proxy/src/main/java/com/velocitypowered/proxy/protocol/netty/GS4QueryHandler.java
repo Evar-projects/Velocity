@@ -273,7 +273,7 @@ public class GS4QueryHandler extends SimpleChannelInboundHandler<DatagramPacket>
         QueryResponse.PluginInformation info = iterator.next();
         pluginsString.append(info.getName());
         Optional<String> version = info.getVersion();
-        version.ifPresent(s -> pluginsString.append(' ').append(s));
+        version.ifPresent(pluginsString.append(' ')::append);
         if (iterator.hasNext()) {
           pluginsString.append(';').append(' ');
         }

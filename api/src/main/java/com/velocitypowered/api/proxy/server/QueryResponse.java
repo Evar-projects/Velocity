@@ -12,7 +12,6 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
-import com.velocitypowered.api.proxy.config.ProxyConfig;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

@@ -92,12 +92,12 @@ public final class DimensionData {
     this.monsterSpawnLightLevel = monsterSpawnLightLevel;
     Preconditions.checkNotNull(
         registryIdentifier, "registryIdentifier cannot be null");
-    Preconditions.checkArgument(registryIdentifier.length() > 0,
+    Preconditions.checkArgument(!registryIdentifier.isEmpty(),
         "registryIdentifier cannot be empty");
     Preconditions.checkArgument(logicalHeight >= 0, "localHeight must be >= 0");
     Preconditions.checkNotNull(
         burningBehaviourIdentifier, "burningBehaviourIdentifier cannot be null");
-    Preconditions.checkArgument(burningBehaviourIdentifier.length() > 0,
+    Preconditions.checkArgument(!burningBehaviourIdentifier.isEmpty(),
         "burningBehaviourIdentifier cannot be empty");
     this.registryIdentifier = registryIdentifier;
     this.dimensionId = dimensionId;

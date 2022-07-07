@@ -19,7 +19,6 @@ package com.velocitypowered.proxy.connection.backend;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.event.player.ServerLoginPluginMessageEvent;
-import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import com.velocitypowered.api.util.GameProfile;
