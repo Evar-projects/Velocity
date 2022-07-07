@@ -92,7 +92,7 @@ public class GlistCommand {
       sendTotalProxyCount(source);
     } else {
       Optional<RegisteredServer> registeredServer = server.getServer(serverName);
-      if (!registeredServer.isPresent()) {
+      if (registeredServer.isEmpty()) {
         source.sendMessage(Identity.nil(),
             CommandMessages.SERVER_DOES_NOT_EXIST.args(Component.text(serverName)));
         return -1;

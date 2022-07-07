@@ -62,7 +62,7 @@ public class ServerCommand implements SimpleCommand {
       // Trying to connect to a server.
       String serverName = args[0];
       Optional<RegisteredServer> toConnect = server.getServer(serverName);
-      if (!toConnect.isPresent()) {
+      if (toConnect.isEmpty()) {
         player.sendMessage(Identity.nil(), CommandMessages.SERVER_DOES_NOT_EXIST
             .args(Component.text(serverName)));
         return;

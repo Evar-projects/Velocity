@@ -60,7 +60,7 @@ public class ServerListPingHandler {
     List<CompletableFuture<ServerPing>> pings = new ArrayList<>();
     for (String s : servers) {
       Optional<RegisteredServer> rs = server.getServer(s);
-      if (!rs.isPresent()) {
+      if (rs.isEmpty()) {
         continue;
       }
       VelocityRegisteredServer vrs = (VelocityRegisteredServer) rs.get();

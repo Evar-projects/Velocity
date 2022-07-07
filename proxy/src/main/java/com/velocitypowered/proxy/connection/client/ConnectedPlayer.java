@@ -837,7 +837,7 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player, 
 
     DisconnectEvent.LoginStatus status;
     if (connectedPlayer.isPresent()) {
-      if (!connectedPlayer.get().getCurrentServer().isPresent()) {
+      if (connectedPlayer.get().getCurrentServer().isEmpty()) {
         status = LoginStatus.PRE_SERVER_JOIN;
       } else {
         status = connectedPlayer.get() == this ? LoginStatus.SUCCESSFUL_LOGIN
@@ -1125,7 +1125,7 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player, 
             return server.getEventManager().fire(event)
                 .thenComposeAsync(newEvent -> {
                   Optional<RegisteredServer> newDest = newEvent.getResult().getServer();
-                  if (!newDest.isPresent()) {
+                  if (newDest.isEmpty()) {
                     return completedFuture(
                         plainResult(ConnectionRequestBuilder.Status.CONNECTION_CANCELLED, toConnect)
                     );

@@ -396,7 +396,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
       ServerInfo newInfo =
           new ServerInfo(entry.getKey(), AddressUtil.parseAddress(entry.getValue()));
       Optional<RegisteredServer> rs = servers.getServer(entry.getKey());
-      if (!rs.isPresent()) {
+      if (rs.isEmpty()) {
         servers.register(newInfo);
       } else if (!rs.get().getServerInfo().equals(newInfo)) {
         for (Player player : rs.get().getPlayersConnected()) {
